@@ -1,0 +1,29 @@
+POST http://localhost:8777/api/get
+Content-Type: application/json
+
+{
+  "id": "5",
+  "digit_params": {
+    "height": 80,
+    "width": 200,
+    "captcha_len": 6,
+    "max_skew": 0.7,
+    "dot_count": 80
+  }
+}
+
+###
+POST http://localhost:8777/api/verify
+Content-Type: application/json
+
+{
+  "id": "5",
+  "verifyValue": "565030",
+  "digit_params": {
+    "height": 50,
+    "width": 150,
+    "captcha_len": 5,
+    "max_skew": 0.7,
+    "dot_count": 80
+  }
+}
