@@ -5,10 +5,10 @@ import (
 	"github.com/burhon94/goCaptchaMojo/modeles"
 )
 
-func GenerateCaptcha(postParameters modeles.ConfigJsonBody) (base64blob, captchaId string) {
+func GenerateCaptcha(postParameters modeles.ConfigJsonBody) (base64blob, captchaId, captchaValue string) {
 	var config modeles.ConfigDigit
 	config = postParameters.DigitParams
-	captchaId, captchaInterfaceInstance := base64MyCaptchaDigit.GenerateCaptcha(postParameters.Id, config)
+	captchaId, captchaInterfaceInstance, captchaValue := base64MyCaptchaDigit.GenerateCaptcha(postParameters.Id, config)
 	base64blob = base64MyCaptchaDigit.CaptchaWriteToBase64Encoding(captchaInterfaceInstance)
 
 	return
