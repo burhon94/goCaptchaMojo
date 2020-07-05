@@ -14,9 +14,8 @@ func GenerateCaptcha(postParameters modeles.ConfigJsonBody) (base64blob, captcha
 	return
 }
 
-func VerifyCaptcha(postParameters modeles.ConfigJsonBody) (ResultOK bool){
+func VerifyCaptcha(postParameters modeles.ConfigJsonBody) (ResultOK bool) {
 	verifyResult := base64MyCaptchaDigit.VerifyCaptcha(postParameters.Id, postParameters.VerifyValue)
 
 	return verifyResult
 }
-
