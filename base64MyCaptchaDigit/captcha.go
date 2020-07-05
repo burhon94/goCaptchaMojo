@@ -65,12 +65,11 @@ func VerifyCaptchaAndIsClear(identifier, verifyValue string, isClear bool) bool 
 	return strings.ToLower(storeValue) == strings.ToLower(verifyValue)
 }
 
-func GenerateCaptcha(idKey string, configuration modeles.ConfigDigit) (id string, captchaInstance CaptchaInterface) {
+func GenerateCaptcha(idKey string, configuration modeles.ConfigDigit) (id string, captchaInstance CaptchaInterface, verifyValue string) {
 	if idKey == "" {
 		idKey = randomId()
 	}
 	id = idKey
-	var verifyValue string
 
 	dig := EngineDigitsCreate(idKey, configuration)
 	verifyValue = dig.VerifyValue
@@ -78,5 +77,5 @@ func GenerateCaptcha(idKey string, configuration modeles.ConfigDigit) (id string
 
 	globalStore.Set(idKey, verifyValue)
 
-	return idKey, captchaInstance
+	return idKey, captchaInstance, verifyValue
 }
