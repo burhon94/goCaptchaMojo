@@ -21,11 +21,11 @@ func generateCaptchaHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer r.Body.Close()
 
-	base64blob, captchaId := captcha.GenerateCaptcha(postParameters)
+	base64blob, captchaId, value := captcha.GenerateCaptcha(postParameters)
 
 	//set json response
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
-	body := map[string]interface{}{"code": 200, "data": base64blob, "captchaId": captchaId, "msg": "success"}
+	body := map[string]interface{}{"code": 200, "data": base64blob, "captchaId": captchaId, "msg": "success", "value": value}
 	json.NewEncoder(w).Encode(body)
 }
 
